@@ -28,6 +28,7 @@ public void setup()
 }
 public void draw()
 {
+	background(0);
 	translate(width/2,height/2);
 	rad=(float)(Math.PI/4);
 	inscribedSquares(0,0,sideLength,numSquares);
@@ -42,10 +43,10 @@ public void inscribedSquares(double x, double y, double sideL, double nSqures)
 	if(nSqures>0)
 	{
 		rotate((float)rad);
-		int r=(int)(Math.random()*256);
-		int g=(int)(Math.random()*256);
-		int b=(int)(Math.random()*256);
-		fill(r,g,b,127);
+		int r=255;
+		int g=137;
+		int b=74;
+		fill(r,g,b,50);
 		stroke(r,g,b);
 		rect((float)x,(float)y,(float)sideL/2,(float)sideL/2);
 		rotate((float)rad);
