@@ -15,21 +15,27 @@ import java.io.IOException;
 public class OriginalFractal extends PApplet {
 
 double rad=(float)(Math.PI/4);
-double screenL=500;
-double sideLength=screenL*(Math.sqrt(2)/2);
+double screenL=800;
+double sideLength=screenL*(Math.sqrt(2)/2)+100;
 double numSquares=100;
 public void setup()
 {
 	size((int)screenL,(int)screenL);
 	background(0);
-	translate(width/2,height/2);
 	rectMode(RADIUS); //all squares are drawn with specified center and radius
 	strokeWeight(5);
-	inscribedSquares(0,0,sideLength,numSquares);
+	//noLoop();
 }
 public void draw()
 {
-
+	translate(width/2,height/2);
+	rad=(float)(Math.PI/4);
+	inscribedSquares(0,0,sideLength,numSquares);
+	sideLength++;
+}
+public void mousePressed()
+{
+	redraw();
 }
 public void inscribedSquares(double x, double y, double sideL, double nSqures)
 {
