@@ -1,7 +1,8 @@
 public double rad=(float)(Math.PI/4);
 public double screenL=500;
-public double sideLength=1; //screenL*Math.sqrt(2)/2+100
-public int numSquares=22;
+public double sideLength1=1; //screenL*Math.sqrt(2)/2+100
+public double sideLength2=200;
+public int numSquares=12;
 public int r=220;
 public int g=122;
 public int b=255;
@@ -19,14 +20,26 @@ public void draw()
 	r=220;
 	g=122;
 	b=255;
-	inscribedSquares(0,0,sideLength,numSquares);
-	sideLength++;
-	sideLength*=1.01;
-	if(sideLength>=screenL/Math.pow(Math.sqrt(2)/2, numSquares-1)+100) 
+	if(sideLength1<=screenL/Math.pow(Math.sqrt(2)/2, numSquares-1)+100) 
 	{
-		background(0);
-		sideLength=1;
+		inscribedSquares(0,0,sideLength1,numSquares);
+		sideLength1++;
+		sideLength1*=1.01;
 	}
+	if(sideLength1>=200)
+	{
+		inscribedSquares(0,0,sideLength2,numSquares);
+	}
+	if(sideLength2<=screenL/Math.pow(Math.sqrt(2)/2, numSquares-1)+100)
+	{
+
+	}
+
+}
+public void mousePressed()
+{
+	println(frameRate);
+	println("numSquares: "+numSquares);
 }
 public void inscribedSquares(double x, double y, double sideL, int nSquares)
 {

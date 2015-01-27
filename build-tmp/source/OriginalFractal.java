@@ -17,7 +17,7 @@ public class OriginalFractal extends PApplet {
 public double rad=(float)(Math.PI/4);
 public double screenL=500;
 public double sideLength=1; //screenL*Math.sqrt(2)/2+100
-public int numSquares=22;
+public int numSquares=12;
 public int r=220;
 public int g=122;
 public int b=255;
@@ -42,7 +42,13 @@ public void draw()
 	{
 		background(0);
 		sideLength=1;
+		numSquares=numSquares+10;
 	}
+}
+public void mousePressed()
+{
+	println(frameRate);
+	println("numSquares: "+numSquares);
 }
 public void inscribedSquares(double x, double y, double sideL, int nSquares)
 {
