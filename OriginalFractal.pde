@@ -1,9 +1,9 @@
 double rad=(float)(Math.PI/4);
 double screenL=500;
-double sideLength=screenL*Math.sqrt(2)/2+100;
-int numSquares=50;
-int r=170;
-int g=0;
+double sideLength=1; //screenL*Math.sqrt(2)/2+100
+int numSquares=52;
+int r=220;
+int g=122;
 int b=255;
 public void setup()
 {
@@ -11,35 +11,67 @@ public void setup()
 	background(0);
 	rectMode(RADIUS); //all squares are drawn with specified center and radius
 	strokeWeight(1);
-	//noLoop();
 }
 public void draw()
 {
-	background(0);
-	translate(width/2,height/2);
+	translate((float)(screenL/2), (float)(screenL/2));
 	rad=(float)(Math.PI/4);
+	r=220;
+	g=122;
+	b=255;
 	inscribedSquares(0,0,sideLength,numSquares);
+	sideLength++;
+	sideLength*=1.01;
+	if(sideLength>=screenL/Math.pow(Math.sqrt(2)/2, numSquares-1)+100) 
+	{
+		background(0);
+		sideLength=1;
+	}
 }
-public void mousePressed()
+public void inscribedSquares(double x, double y, double sideL, int nSquares)
 {
-	println(frameRate);
-}
-public void inscribedSquares(double x, double y, double sideL, int nSqures, int cProgression)
-{
-	if(nSqures>0)
+	if(nSquares>0)
 	{
 		rotate((float)rad);
-		if(nSqures)
+		if(nSquares==numSquares) { }
+		else if(nSquares>numSquares-1-1*(numSquares-2)/5)
+		{
+			r=r-98/((numSquares-2)/5);
+		}
+		else if(nSquares>numSquares-1-2*(numSquares-2)/5)
+		{
+			r=122;
+			g=g+133/((numSquares-2)/5);
+		}
+		else if(nSquares>numSquares-1-3*(numSquares-2)/5)
+		{
+			g=255;
+			b=b-133/((numSquares-2)/5);
+		}
+		else if(nSquares>numSquares-1-4*(numSquares-2)/5)
+		{
+			b=122;
+			r=r+133/((numSquares-2)/5);
+		}
+		else if(nSquares>numSquares-1-5*(numSquares-2)/5)
+		{
+			r=255;
+			g=g-133/((numSquares-2)/5);
+		}
+		else
+		{
+			r=0; g=0; b=0;
+		}
 		fill(r,g,b);
-		stroke(255);
+		stroke(0);
 		rect((float)x,(float)y,(float)sideL/2,(float)sideL/2);
 		rotate((float)rad);
-		nSqures--;
+		nSquares--;
 	}
-	if(nSqures>0) 
+	if(nSquares>0) 
 	{
 		rad=rad+(double)(Math.PI/4);
 		sideL=sideL*(Math.sqrt(2)/2);
-		inscribedSquares(x,y,sideL,nSqures);
+		inscribedSquares(x,y,sideL,nSquares);
 	}
 }
