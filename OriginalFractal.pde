@@ -10,7 +10,7 @@ public void setup()
 	size((int)screenL,(int)screenL);
 	background(0);
 	rectMode(RADIUS); //all squares are drawn with specified center and radius
-	strokeWeight(1);
+	smooth();
 }
 public void draw()
 {
