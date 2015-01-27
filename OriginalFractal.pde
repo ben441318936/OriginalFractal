@@ -1,7 +1,7 @@
 double rad=(float)(Math.PI/4);
 double screenL=500;
 double sideLength=1; //screenL*Math.sqrt(2)/2+100
-int numSquares=52;
+int numSquares=22;
 int r=220;
 int g=122;
 int b=255;
