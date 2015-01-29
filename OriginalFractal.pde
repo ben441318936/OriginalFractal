@@ -28,11 +28,6 @@ public void draw()
 		numSquares++;
 	}
 }
-public void mousePressed()
-{
-	println(frameRate);
-	println("numSquares: "+numSquares);
-}
 public void inscribedSquares(double x, double y, double sideL, int nSquares)
 {
 	if(nSquares>0)
